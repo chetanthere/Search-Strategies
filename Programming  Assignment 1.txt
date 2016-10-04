@@ -1,0 +1,61 @@
+Assignment-2-Search
+Jesus A. Gonzalez
+
+June 20, 2016
+
+Programming Assignment 1
+Due Date: July 6, 2016
+Uninformed Search Strategies
+For this assignment you will implement at least 2 of the uninformed search strategies learnt in class:
+
+Breadth First Search
+Depth First Search
+additionally, you may want to try other techniques such as:
+
+Unoform-cost Search
+Depth-limited Search
+Iterative Deepening Depth-first Search
+Bidirectional Search
+In your implementation consider the “GRAPH-SEARCH” algorithm in order to make a more intelligent exploration of the search space.
+
+The input to your program will be that of the agent problem in Romania (from the AI textbook, figure 3.2: A simplified road map of part of Romania.) in a text format as the following:
+
+Arad,Zerind,75
+Arad,Timisoara,118
+Arad,Sibiu,140
+Zerind,Oradea,71
+Oradea,Sibiu,151
+Timisoara,Lugoj,111
+Lugoj,Mehadia,70
+Mehadia,Drobeta,75
+Drobeta,Craiova,120
+Craiova,Rimnicu Vilcea,146
+Craiova,Pitesti,138
+Sibiu,Fagaras,99
+Sibiu,Rimnicu Vilcea,80
+Rimnicu Vilcea,Pitesti,97
+Fagaras,Bucharest,211
+Pitesti,Bucharest,101
+Bucharest,Urziceni,85
+Bucharest,Giurgiu,90
+Urziceni,Vaslui,142
+Vaslui,Iasi,92
+Iasi,Neamt,87
+Urziceni,Hirsova,98
+Hirsova,Eforie,86
+Note that, for example, we only stored the path from Arad to Zerind with a path cost of 75 but we also have the path from Zerind to Arad with the same cost of 75 available.
+
+Some of the functions that you need to implement are:
+
+Graph-Search
+InitializeFrontier
+ChooseNode, make it a general function so that you are able to change the search strategy as easy as possible
+TestGoal
+ExpandNode
+UpdateFrontier
+For your data structure consider a node with the following information
+
+node.STATE
+node.PARENT
+node.ACTION
+node.PATH-COST
