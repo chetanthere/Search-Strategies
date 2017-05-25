@@ -4,7 +4,6 @@
 #from sets import Set
 from operator import sub
 
-
 graph = {}
 path = []
 pathcost = 0
@@ -24,8 +23,7 @@ def create_graph():
     with open('C:/Users/Chetan There/Desktop/assign1.txt') as inp_file:
 
         for line in inp_file:
-            al = []
-            #print(line)
+            al = []           
             linec = linec + 1
             words = line.split(",")
             sn = words[0]
@@ -56,35 +54,33 @@ def create_graph():
                 graph[en] = al
 
     print("total lines = ", linec)
+    
 
 def show_graph():
     print("Here is given Graph")
     for k,v in graph.items():
         show = str(k) +" : " +str(v)
         print(show )
+        
 
-def initialize():
-    #print("Here is given initialize")
+def initialize():   
     global path,pathcost,fq,cq
-
     path = []
     pathcost = 0
     fq = []
     cq = []
     return
 
-def testgoal():
-    #print("Here is given testgoal")
-    global cn,en
-    #print(cn,en)
+
+def testgoal():    
+    global cn,en   
     if (cn == en):
         return 1
     else:
         return 0
 
 
-def update_frontier(salgo):
-    #print("Here is given update_frontier")
+def update_frontier(salgo):    
     global cn, en, sn
     global path, pathcost, fq, cq, cpathcost, clength, givenl
 
@@ -95,8 +91,7 @@ def update_frontier(salgo):
                 ts1 = cn
                 ts2 = tuples[1]
 
-                if(salgo == "ucs"):
-                    #cpathcost = cpathcost + ts2
+                if(salgo == "ucs"):                   
                     ts2 = cpathcost + ts2
 
                 tupless = (ts0,ts1,ts2)
@@ -117,12 +112,10 @@ def update_frontier(salgo):
     return
 
 
-def choose_node(salgo):
-    #print("Here is given choose_node")
+def choose_node(salgo):    
     global cn, en, sn
     global path, pathcost, fq, cq, cpathcost,clength
-    #print(salgo)
-
+  
     if( (salgo == "bfs") or (salgo == "ucs") ):
         cnt = fq[0]
         if (salgo == "ucs"):
@@ -143,10 +136,8 @@ def choose_node(salgo):
     return
 
 
-def cal_path():
-    #print("Here is given cal_path")
+def cal_path():    
     global path, pathcost
-
     i = 0
     pathcost = 0
     rpath = []
@@ -171,8 +162,7 @@ def cal_path():
     return
 
 
-def bfs_search():
-    #print("Here is bfs_search")
+def bfs_search():    
     global cn, en, sn
     global path, pathcost, fq, cq
 
@@ -182,20 +172,16 @@ def bfs_search():
     result = 0
 
     while (True):
-
         tgr = testgoal()
         if(tgr == 1):
             result = 1
             res = path
             break
-
         update_frontier("bfs")
-
         if len(fq) == 0:
             res = "no path"
             result = 0
             break
-
         choose_node("bfs")
 
     cal_path()
@@ -207,7 +193,6 @@ def bfs_search():
 
 
 def dfs_search():
-    #print("Here is dfs_search")
     global cn, en, sn
     global path, pathcost, fq, cq
 
@@ -217,13 +202,12 @@ def dfs_search():
     result = 0
 
     while (True):
-
         tgr = testgoal()
         if (tgr == 1):
             result = 1
             res = path
             break
-
+            
         update_frontier("dfs")
 
         if len(fq) == 0:
@@ -241,11 +225,9 @@ def dfs_search():
     return (res)
 
 
-def ucs_search():
-    #print("Here is ucs_search")
+def ucs_search():    
     global cn, en, sn
     global path, pathcost, fq, cq,    cpathcost
-
 
     initialize()
     path.append((sn, sn, 0))
@@ -254,7 +236,6 @@ def ucs_search():
     result = 0
 
     while (True):
-
         tgr = testgoal()
         if (tgr == 1):
             result = 1
@@ -277,7 +258,6 @@ def ucs_search():
         res.reverse()
 
     return (res)
-
 
 
 def dfsl_search():
@@ -318,7 +298,6 @@ def dfsl_search():
     return (res)
 
 
-
 if __name__ == '__main__':
     create_graph()
     show_graph()
@@ -337,7 +316,6 @@ if __name__ == '__main__':
     print("path cost :")
     print(pathcost)
 
-
     res = dfs_search()
     print("dfs results")
     print("traverse through :")
@@ -347,8 +325,6 @@ if __name__ == '__main__':
     print("path cost :")
     print(pathcost)
 
-
-
     res = ucs_search()
     print("ucs results")
     print("traverse through :")
@@ -357,8 +333,6 @@ if __name__ == '__main__':
     print(path)
     print("path cost :")
     print(pathcost)
-
-
 
     res = dfsl_search()
     print("dfsl results")
